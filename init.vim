@@ -16,8 +16,9 @@ Plug 'navarasu/onedark.nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
+luafile treesitter.lua
 
 syntax on
 let g:onedark_config = {
