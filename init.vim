@@ -18,7 +18,16 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
-luafile treesitter.lua
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "cpp", "typescript", "svelte", "javascript" },
+  sync_install = true,
+  auto_install = true,
+  highlight = {
+    enable = true,
+  },
+}
+EOF
 
 syntax on
 let g:onedark_config = {
