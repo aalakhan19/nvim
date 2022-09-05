@@ -29,3 +29,4 @@ let g:svelte_preprocessors = ['typescript']
 let mapleader = " "
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>p :PlugInstall<cr>
