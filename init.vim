@@ -13,10 +13,10 @@ set smartcase
 
 call plug#begin()
 Plug 'navarasu/onedark.nvim'
-Plug 'sheerun/vim-polyglot'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 lua << EOF
 require'nvim-treesitter.configs'.setup {
@@ -39,4 +39,4 @@ let g:svelte_preprocessors = ['typescript']
 let mapleader = " "
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
-nnoremap <leader>p :PlugInstall<cr>
+nnoremap <leader>p :so %<cr>:PlugInstall<cr>
