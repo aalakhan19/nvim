@@ -27,6 +27,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
+require'lspconfig'.tsserver.setup {}
 EOF
 
 syntax on
@@ -40,3 +41,4 @@ let mapleader = " "
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>p :so %<cr>:PlugInstall<cr>
+nnoremap <leader>c :e ~/.config/nvim/init.vim<cr>
