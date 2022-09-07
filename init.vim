@@ -31,6 +31,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 lua << EOF
@@ -38,8 +39,8 @@ require('lualine').setup {
   options = {
     icons_enabled = false,
     theme = 'tokyonight',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -135,8 +136,8 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
@@ -159,9 +160,16 @@ set termguicolors
 colorscheme tokyonight
 
 let g:svelte_preprocessors = ['typescript']
+au FileType html let b:AutoPairs = AutoPairsDefine({'<!--' : '-->'}, ['{'])'}'])
 
 let mapleader = " "
 nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>P <cmd>Telescope live_grep<cr>
 nnoremap <leader>dd <cmd>Telescope diagnostics<cr>
 nnoremap <leader>s :w<cr>
+
+if has('unix')
+  nnoremap <leader>c :e ~/.config/nvim/init.vim<cr>
+else
+  nnoremap <leader>c :e ~\AppData\Local\nvim\init.vim<cr>
+endif
