@@ -32,6 +32,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 lua << EOF
