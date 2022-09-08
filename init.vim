@@ -15,6 +15,8 @@ set nohlsearch
 set completeopt=menu,menuone,noselect
 set signcolumn=yes
 set noshowmode
+set splitbelow
+set splitright
 
 call plug#begin()
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
@@ -36,46 +38,8 @@ Plug 'tpope/vim-fugitive'
 call plug#end()
 
 lua << EOF
-require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    theme = 'tokyonight',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {
-      statusline = {},
-      winbar = {},
-    },
-    ignore_focus = {},
-    always_divide_middle = true,
-    globalstatus = false,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
-    }
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  winbar = {},
-  inactive_winbar = {},
-  extensions = {}
-}
+local servers = { 'tsserver', 'clangd', 'svelte', 'html', 'cssls'}
+require('lualine').setup {}
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "cpp", "typescript", "svelte", "javascript", "html", "css", "markdown", "markdown_inline" },
   sync_install = true,
@@ -125,7 +89,6 @@ vim.diagnostic.config({
 })
 
 local nvim_lsp = require'lspconfig'
-local servers = { 'tsserver', 'clangd', 'svelte'}
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
@@ -156,12 +119,12 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
+set guifont=FiraCode\ NF:h11:ASCI
 syntax on
 set termguicolors
 colorscheme tokyonight
 
 let g:svelte_preprocessors = ['typescript']
-au FileType html let b:AutoPairs = AutoPairsDefine({'<!--' : '-->'}, ['{'])'}'])
 
 let mapleader = " "
 nnoremap <leader>p <cmd>Telescope find_files<cr>
@@ -170,7 +133,7 @@ nnoremap <leader>dd <cmd>Telescope diagnostics<cr>
 nnoremap <leader>s :w<cr>
 
 if has('unix')
-  nnoremap <leader>c :e ~/.config/nvim/init.vim<cr>
+  nnoremap <leader>c :e ~/.config/nvim/init.vim<cr> 
 else
   nnoremap <leader>c :e ~\AppData\Local\nvim\init.vim<cr>
 endif
