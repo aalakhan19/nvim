@@ -38,7 +38,7 @@ Plug 'tpope/vim-fugitive'
 call plug#end()
 
 lua << EOF
-local servers = { 'tsserver', 'clangd', 'svelte', 'html', 'cssls'}
+local servers = { 'tsserver', 'clangd', 'svelte', 'html', 'cssls', 'gdscript'}
 require('lualine').setup {}
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "cpp", "typescript", "svelte", "javascript", "html", "css", "markdown", "markdown_inline" },
@@ -119,7 +119,6 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
-set guifont=FiraCode\ NF:h11:ASCI
 syntax on
 set termguicolors
 colorscheme tokyonight
@@ -136,4 +135,5 @@ if has('unix')
   nnoremap <leader>c :e ~/.config/nvim/init.vim<cr> 
 else
   nnoremap <leader>c :e ~\AppData\Local\nvim\init.vim<cr>
+  set guifont=FiraCode\ NF:h11:ASCI
 endif
