@@ -17,7 +17,8 @@ set signcolumn=yes
 set noshowmode
 set splitbelow
 set splitright
-
+set pumheight=8
+set autoread
 call plug#begin()
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'nvim-lua/plenary.nvim'
@@ -33,7 +34,6 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
@@ -71,6 +71,7 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'vsnip' }, -- For vsnip users.
+    { name = 'path' }, -- For vsnip users.
   }, {
     { name = 'buffer' },
   })
@@ -130,6 +131,7 @@ nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>P <cmd>Telescope live_grep<cr>
 nnoremap <leader>dd <cmd>Telescope diagnostics<cr>
 nnoremap <leader>s :w<cr>
+nnoremap <leader>r :e<cr>
 
 if has('unix')
   nnoremap <leader>c :e ~/.config/nvim/init.vim<cr> 
