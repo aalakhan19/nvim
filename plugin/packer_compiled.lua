@@ -104,6 +104,16 @@ _G.packer_plugins = {
     path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\flutter-tools.nvim",
     url = "https://github.com/akinsho/flutter-tools.nvim"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
+  },
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lspsaga.nvim",
@@ -124,6 +134,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cmp",
@@ -143,6 +158,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-ts-autotag"] = {
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -174,11 +196,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-maximizer",
     url = "https://github.com/szw/vim-maximizer"
   },
-  ["vim-nightfly-colors"] = {
-    loaded = true,
-    path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-nightfly-colors",
-    url = "https://github.com/bluz71/vim-nightfly-colors"
-  },
   ["vim-surround"] = {
     loaded = true,
     path = "C:\\Users\\Aala\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-surround",
@@ -192,6 +209,11 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd nvim-ts-autotag ]]
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

@@ -5,18 +5,17 @@ opt.relativenumber = true
 opt.number = true
 
 -- tabs
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
-opt.autoindent = true
-
--- search settings
+opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+opt.shiftwidth = 2 -- 2 spaces for indent width
+opt.expandtab = true -- expand tab to spaces
+opt.autoindent = true -- copy indent from current line when starting new one-- search settings
 opt.ignorecase = true
 opt.smartcase = true
 
 -- appearance
 opt.termguicolors = true
 opt.background = "dark"
+opt.cursorline = true
 
 -- backspace
 opt.backspace = "indent,eol,start"
@@ -25,8 +24,10 @@ opt.backspace = "indent,eol,start"
 opt.clipboard:append("unnamedplus")
 
 -- split buffers
-opt.splitright = true
 opt.splitbelow = true
+opt.splitright = true
 
 -- swapfiles
 opt.swapfile = false
+
+opt.iskeyword:append("-")

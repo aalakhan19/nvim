@@ -32,5 +32,6 @@ lspconfig["rust_analyzer"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
+
 -- Autoformat on save
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]

@@ -36,7 +36,6 @@ return packer.startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-telescope/telescope.nvim'
-    use 'bluz71/vim-nightfly-colors'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
@@ -56,6 +55,10 @@ return packer.startup(function(use)
     })
     use 'akinsho/flutter-tools.nvim'
     use 'ixru/nvim-markdown'
+    use 'ggandor/leap.nvim'
+    use 'windwp/nvim-autopairs' 
+    use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) 
+    use 'lewis6991/gitsigns.nvim' 
 
     if packer_bootstrap then
         require("packer").sync()
